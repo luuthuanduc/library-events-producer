@@ -30,13 +30,13 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class LibraryEventsProducerUnitTest {
 
+    @InjectMocks
+    LibraryEventsProducer libraryEventsProducer;
     String topic = "library-events";
     @Mock
     KafkaTemplate<Integer, String> kafkaTemplate;
     @Spy
     ObjectMapper objectMapper = new ObjectMapper();
-    @InjectMocks
-    LibraryEventsProducer libraryEventsProducer;
 
     @BeforeEach
     void setUp() {

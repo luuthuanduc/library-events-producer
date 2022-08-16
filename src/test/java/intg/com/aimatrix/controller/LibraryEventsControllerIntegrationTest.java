@@ -33,7 +33,7 @@ import java.util.stream.StreamSupport;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@EmbeddedKafka(topics = {"library-events"}, partitions = 3)
+@EmbeddedKafka(topics = {"${spring.kafka.template.default-topic}"}, partitions = 3)
 @TestPropertySource(properties = {"spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"})
 public class LibraryEventsControllerIntegrationTest {
 
