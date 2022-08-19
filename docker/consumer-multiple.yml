@@ -1,0 +1,28 @@
+version: '2.1'
+
+services:
+  consumer1:
+    image: library-events-consumer:1.0.0
+    hostname: consumer1
+    container_name: consumer1
+    networks:
+      - kafka
+    ports:
+      - "8081:8080"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: "kafka1:19092,kafka2:19093,kafka3:19094"
+
+  consumer2:
+    image: library-events-consumer:1.0.0
+    hostname: consumer2
+    container_name: consumer2
+    networks:
+      - kafka
+    ports:
+      - "8082:8080"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: "kafka1:19092,kafka2:19093,kafka3:19094"
+
+networks:
+  kafka:
+    driver: bridge

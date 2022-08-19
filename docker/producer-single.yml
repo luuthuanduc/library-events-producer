@@ -1,0 +1,17 @@
+version: '2.1'
+
+services:
+  producer:
+    image: library-events-producer:1.0.0
+    hostname: producer
+    container_name: producer
+    networks:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: "kafka1:19092,kafka2:19093,kafka3:19094"
+
+networks:
+  kafka:
+    driver: bridge
